@@ -1,6 +1,6 @@
-const lat = 39.2557;
-const long = -76.7113;
-const zoom_lvl = 15;
+const lat = 39.2557; // latitude of UMBC
+const long = -76.7113; // longitude of UMBC
+const zoom_lvl = 15; // base nice size zoom level (can play around with this)
 
 const nav_map = L.map("map").setView([lat, long], zoom_lvl);
 
