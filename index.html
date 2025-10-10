@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-
+   <!-- Stops the map from breaking -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Loads leaflet from unpkg-->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
+
 <body>
+  <!-- Really basic map -->
+  <div id="map" style="height: 500px;"></div>
 
-  <h1>Hello There!</h1>
-  
-  <p>This is a static web page.</p>
-
-  <img src="https://umbcsad.net/funnyrat/rat-spinning-hd.gif" alt="funny rat">
-  
+  <!-- Needs to come after the div container so that JS can find it-->
+  <script src="js/mapSetup.js"></script>
 </body>
+
 </html>
