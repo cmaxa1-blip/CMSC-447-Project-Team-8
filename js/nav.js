@@ -87,6 +87,7 @@ function A_star(start_id, end_id) {
     return [];
     
 }
+
 /* bad nodes -- freezes algo: should test again since update
 let id1 = "37753401";
 let id2 = "5804970761";
