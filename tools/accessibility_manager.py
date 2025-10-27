@@ -67,7 +67,7 @@ def draw_graph(G):
     # Optional: Add nodes as red dots
     for _, row in nodes.iterrows():
         folium.CircleMarker(location=(row.geometry.y, row.geometry.x),
-                            radius=2, color='red', fill=True, popup=folium.Popup(f"{_}")).add_to(m)
+                            radius=2, color='red', fill=True, popup=folium.Popup(f"{_}")).add_to(m) # The popup here is temporary and is only for iding nodes for navigation testing purposes
 
     # Add js interaction
     m.get_root().html.add_child(folium.Element("""
