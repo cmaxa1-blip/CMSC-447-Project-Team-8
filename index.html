@@ -36,5 +36,69 @@
   <option value="option2">Option 2</option>
   <option value="option3">Option 3</option>
 </select>
+
+  <style>
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+    }
+    #box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+    }
+    #suggestions div {
+      padding: 5px;
+      cursor: pointer;
+    }
+    #suggestions div:hover {
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+
+<button onclick="overlay.style.display='flex'">Open</button>
+
+<div id="overlay">
+  <div id="box">
+    <input id="dest" type="text" placeholder="Destination" oninput="updateList()" style="width:100%" />
+    <div id="suggestions" style="border:1px solid #ccc;margin-top:5px;display:none;"></div>
+    <button onclick="startRoute()" style="margin-top:10px;width:100%">Start</button>
+  </div>
+</div>
+
+<script>
+const overlay = document.getElementById('overlay');
+const list = ["Park", "Mall", "Hospital", "Stadium", "Library"];
+
+function updateList() {
+  const val = dest.value.toLowerCase();
+  const box = document.getElementById('suggestions');
+  if (!val) { box.style.display='none'; return; }
+
+  const matches = list.filter(x => x.toLowerCase().includes(val));
+  box.innerHTML = matches.map(x=>`<div onclick=\"choose('${x}')\">${x}</div>`).join('');
+  box.style.display = matches.length ? 'block' : 'none';
+}
+
+function choose(x) {
+  dest.value = x;
+  document.getElementById('suggestions').style.display='none';
+}
+
+function startRoute() {
+  if (!dest.value) return alert('Choose a destination');
+  console.log('Routing to:', dest.value); // Replace with your routing
+  overlay.style.display = 'none';
+}
+</script>
+
    
 </html>
