@@ -149,9 +149,8 @@ function generate_route(n1, n2) {
     route = A_star(n1, n2);
     tron_line(route);
     full_route = __tronLayer.getLatLngs();
-    routeStarted = true; //set this to true when the user hits start route
+    routeStarted = true; //set this to true when the user hits start route for now I'll leave it to set here for testing
 }
 
-generate_route("1763757175911", "1763757191244");
 // refreshes the map every time the user's location changes
 nav_map.on("locationfound", map_refresh)
