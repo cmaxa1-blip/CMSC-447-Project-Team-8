@@ -234,15 +234,15 @@ function swap(arr) {
 //let walker = null;
 // longitudes are usually around -76
 function map_refresh(e) {
-    let pos = null;
-    //let pos = [e.latlng.lng, e.latlng.lat]; // get current position
-    pos = swap([39.09265292728514, -76.53798566557292]);
-    var circleMarker = L.circleMarker(swap(pos), {
+    //let pos = null;
+    let pos = [e.latlng.lng, e.latlng.lat]; // get current position
+    //pos = swap([39.09265292728514, -76.53798566557292]);
+    /*var circleMarker = L.circleMarker(swap(pos), {
         radius: 10, // Radius in pixels
         color: 'blue', // Border color
         fillColor: 'red', // Fill color
         fillOpacity: 0.5 // Fill opacity
-    }).addTo(nav_map);
+    }).addTo(nav_map);*/
 
 
 
