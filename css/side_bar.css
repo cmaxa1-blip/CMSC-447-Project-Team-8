@@ -32,14 +32,18 @@
         color: white;
         z-index: 1000;
 
-        display: grid;
-        justify-items: center;
-        /* center horizontally */
-        align-content: start;
-        /* stack from the top down */
-        gap: 10px;
-        /* spacing between elements */
+        display: flex;
+        flex-direction: column;
+        /* stack children vertically */
+        align-items: center;
+        /* default: center all children horizontally */
 
+    }
+
+    #results {
+        align-self: flex-start;
+        text-align: left;
+        margin-left: 10px;
     }
 
     /* Toggle button that follows edge */
@@ -59,13 +63,58 @@
         /* above sidebar */
     }
 
+
+    .res {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        /* text on left, button on right */
+        align-items: center;
+        /* vertically align items */
+        padding: 8px;
+        border: 1px solid #ccc;
+        /* optional styling */
+    }
+
+    .res-text {
+        display: flex;
+        flex-direction: column;
+        /* stack p elements vertically */
+        text-align: left;
+        /* align text to the left */
+
+    }
+
+    .res-text p {
+        margin: 0;
+        color: black;
+        /* removes all default spacing */
+        line-height: 1.4;
+        /* optional: control spacing between lines */
+    }
+
     /* When sidebar is open, move button to edge */
     .sidebar.open~.toggle-btn {
         left: 250px;
         /* match sidebar width */
     }
 
-    /* Main content stays put */
+    .rounded-btn {
+        background-color: rgb(16, 235, 0);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        /* rounded edges */
+        height: 50px;
+        width: 60px;
+        cursor: pointer;
+        margin-left: 90px;
+        /* pushes it away from the text */
+        margin-right: 10px;
+        /* adds extra space from the container edge */
+    }
+
+    /* Main contet stays put */
     .main {
         padding: 20px;
     }
@@ -84,4 +133,33 @@
 
     .backdrop.show {
         display: block;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        /* stays in place on screen */
+        bottom: 20px;
+        /* distance from bottom */
+        right: 20px;
+        /* distance from right */
+        background: rgba(228, 186, 0, 0.919);
+        /* semi-transparent background */
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        /* rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        /* subtle shadow */
+        z-index: 1000;
+        /* sits above other elements */
+    }
+
+    @media (max-width: 600px) {
+        .overlay {
+            bottom: 80px;
+            /* push it higher up */
+            right: 10px;
+            /* optional: adjust horizontal spacing */
+        }
     }

@@ -17,6 +17,48 @@ function sphere_to_cart(coord) {
     return [x, y, z];
 }
 
+function get_closest_node(pos) {
+    // pos is long lat pair
+    // returns id of closest node
+
+    let n_list = Array.from(school_map.keys());
+
+    let cur_min_id = null;
+    let cur_min_dist = Infinity;
+
+    n_list.forEach((n_id) => {
+        let nd = school_map.get(n_id);
+
+        let d = get_distance(pos, nd.coords);
+        cur_min_dist = Math.min(d, cur_min_dist);
+
+        if (cur_min_dist == d)
+            cur_min_id = n_id;
+
+    });
+
+    return { id: cur_min_id, distance: cur_min_dist };
+}
+
+function get_closest_member(group_name, pos) {
+    // returns node id of closest member in the input group to pos (long lat) and distance from it
+    let cur_min_id = null;
+    let cur_min_dist = Infinity;
+
+    let n_list = groups.get(group_name);
+
+    n_list.forEach((n_id) => {
+        let cds = school_map.get(n_id).coords;
+
+        let d = get_distance(pos, cds);
+        cur_min_dist = Math.min(d, cur_min_dist);
+
+        if (cur_min_dist == d)
+            cur_min_id = n_id;
+    });
+
+    return { id: cur_min_id, distance: cur_min_dist };
+}
 function get_distance(coord1, coord2) {
     // n1 and n2 are valid node ids (strings)
     // aproximate distance in meters between nodes
@@ -114,13 +156,13 @@ function get_nearest_coord_pair(pos, coords) {
     return ret_index;
 }
 
-function convert_polypath_to_long_lats(polyPath){
+function convert_polypath_to_long_lats(polyPath) {
     // converts an array of objects representing a polyline (each having lng and lat as an attribute)
     // into [lng, lat] pairs
 
     let new_arr = [];
 
-    polyPath.forEach(function(pt){
+    polyPath.forEach(function (pt) {
         new_arr.push([pt.lng, pt.lat]);
     })
 
