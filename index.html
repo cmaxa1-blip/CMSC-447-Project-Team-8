@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <title>SDS NAV</title>
   <!-- Stops the map from breaking -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <!-- Loads leaflet from unpkg-->
@@ -9,31 +10,46 @@
   <script src="js/school_map.js"></script>
   <script src="js/priority_queue.js"></script>
   <script src="js/tron.js"></script>
+  <link rel="stylesheet" href="css/side_bar.css">
+  <meta charset="UTF-8">
 </head>
 
 <body>
-  <!-- Really basic map -->
-  <div id="map" style="height: 500px;"></div>
+  <div class="sidebar" id="sidebar">
+    <input type="search" style="width: 90%; height: 110%;" id="dest_search">
+    <div id="results">
+
+      <div class="res">
+
+        <p>ITE</p>
+        <p>Distance: 2 mi</p>
+        <button style="background-color:rgb(16, 235, 0); height: 20px; width: 30px;">Go</button>
+      </div>
+    </div>
+  </div>
+  <button class="toggle-btn" id="toggleBtn">☰</button>
+  <script src="js/ui_utils/sidebar.js"></script>
+  <script src="js/ui_utils/search_helper.js"></script>
+
+  <div id="map"></div>
   <!-- PLACEHOLDER, when a new element is made to replace this just keep the id as instruc-->
   <h1 id="instruc">Instruction:</h1>
 
-  <!-- Needs to come after the div container so that JS can find it-->
-  <script src="js/mapSetup.js"></script>
-  <script src="js/geo_location_utils.js"></script>
+
+  <!--Do not change the order of these elements-->
+  <script src="js/startup/mapSetup.js"></script>
+  <script src="js/utils/geo_location_utils.js"></script>
+  <script src="js/startup/show_starting_dot.js"></script>
+  <!--
   <script src="js/nav.js"></script>
-  <script src="js/show_starting_dot.js"></script>
   <script src="js/vec_utils.js"></script>
   <script src="js/testing.js"></script>
   <script src="js/live_instructions.js"></script>
   <script src="js/live_correction.js"></script>
-  <select id="starts">
-  </select>
-  <select id="destinations">
-  </select>
   <script src="js/temp_route_gen.js"></script>
   <button onclick="route_gen()">Generate Route</button>
   <button onclick="temp_start()">Start Route</button>
-  <script src="js/live_directions_test.js"></script>
+  <script src="js/live_directions_test.js"></script>-->
 </body>
 
 
