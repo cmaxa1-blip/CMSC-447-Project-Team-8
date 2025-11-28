@@ -19,7 +19,8 @@ function onGeoSuccess(pos) {
   const { latitude, longitude } = pos.coords;
   placeBlueDot(latitude, longitude);
   // center the map on beginning
-  nav_map.setView([latitude, longitude], zoom_lvl);
+  // need this commented to avoid zoom reset every time tron line is updated
+  //nav_map.setView([latitude, longitude], zoom_lvl);
 }
 
 function onGeoError(err) {

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-   <!-- Stops the map from breaking -->
+  <!-- Stops the map from breaking -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <!-- Loads leaflet from unpkg-->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -23,7 +23,18 @@
   <script src="js/nav.js"></script>
   <script src="js/show_starting_dot.js"></script>
   <script src="js/vec_utils.js"></script>
+  <script src="js/testing.js"></script>
   <script src="js/live_instructions.js"></script>
+  <script src="js/live_correction.js"></script>
+  <select id="starts">
+  </select>
+  <select id="destinations">
+  </select>
+  <script src="js/temp_route_gen.js"></script>
+  <button onclick="route_gen()">Generate Route</button>
+  <button onclick="temp_start()">Start Route</button>
+  <script src="js/live_directions_test.js"></script>
 </body>
+
 
 </html>

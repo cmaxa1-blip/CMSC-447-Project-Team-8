@@ -33,7 +33,7 @@ function get_distance(coord1, coord2) {
 }
 
 function get_nearest_coord(pos, coords) {
-    // coords is an array of long lat pairs
+    // coords is an array of objects having lng and lat attributes
     // pos is a long, lat pair
     // returns the closest coord pair and picks out of the closest 2 the one the farthest along the path (largest index)
 
@@ -80,4 +80,49 @@ function h(n1, n2) {
     dz = coords1[2] - coords2[2];
 
     return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2) + Math.pow(dz, 2));
+}
+
+function get_nearest_coord_pair(pos, coords) {
+    // coords is an array of long lat pairs
+    // pos is a long, lat pair
+    // returns the closest coord pair and picks out of the closest 2 the one the farthest along the path (largest index)
+
+
+    let cur_min = Infinity;
+    let sec_min_index = null;
+    let cur_min_index;
+    let pos_cart = sphere_to_cart(pos)
+
+
+
+    for (let i = 0; i < coords.length; i++) {
+        let coord = sphere_to_cart(coords[i]);
+
+        let cur_dist = get_distance(pos_cart, coord);
+
+        if (cur_dist < cur_min) {
+            if (cur_min != Infinity)
+                sec_min_index = cur_min_index;
+
+            cur_min = cur_dist;
+            cur_min_index = i;
+        }
+    }
+
+    let ret_index = cur_min_index > sec_min_index || !sec_min_index ? cur_min_index : sec_min_index;
+
+    return ret_index;
+}
+
+function convert_polypath_to_long_lats(polyPath){
+    // converts an array of objects representing a polyline (each having lng and lat as an attribute)
+    // into [lng, lat] pairs
+
+    let new_arr = [];
+
+    polyPath.forEach(function(pt){
+        new_arr.push([pt.lng, pt.lat]);
+    })
+
+    return new_arr;
 }
