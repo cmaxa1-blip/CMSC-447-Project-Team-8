@@ -5,6 +5,7 @@
   <title>SDS NAV</title>
   <!-- Stops the map from breaking -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Loads leaflet from unpkg-->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="js/resources/school_map.js"></script>
@@ -19,6 +20,7 @@
 
 <body>
   <div class="sidebar" id="sidebar">
+    <p style="color:black;">Where do you want to go today?</p>
     <input type="search" style="width: 90%; height:4%;" id="dest_search">
     <div id="results">
       <!--
