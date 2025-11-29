@@ -56,7 +56,6 @@ function get_next_pt(pos, route) {
 
     // going to need funciton to convert polyline with lng and lat attributes into swapped arrays
     let pts = get_nearest_coord_pair(pos, route);
-    //console.log("FIrst", pts);
     pos = sphere_to_cart(pos);
 
     let v1 = null; // vector user is traveling along
@@ -64,7 +63,6 @@ function get_next_pt(pos, route) {
 
     /*let d = calculate_distance(pos, sphere_to_cart(route[pts]));
     d = get_dist_from_line()
-    console.log("Distance", d);
     if (d > REDIRECT_CUTOFF && d < REROUTE_CUTOFF) {
         return "Turn around";
     } else if (d >= REROUTE_CUTOFF) {
@@ -92,29 +90,24 @@ function get_next_pt(pos, route) {
 
         return 1;
     } else {
-        //console.log("Correct");
         let p1 = sphere_to_cart(route[pts - 1]);
         let p2 = sphere_to_cart(route[pts + 1]);
         let p = sphere_to_cart(route[pts]);
 
         let d1 = get_dist_from_line(p1, p, pos);
         let d2 = get_dist_from_line(p, p2, pos);
-        //console.log("Dist 1", d1);
-        //console.log("Dist 2", d2);
 
         if (d1 <= d2) {
-            //console.log("first line");
             v1 = make_vec(p1, p);
             v2 = make_vec(p, p2);
 
             if (calculate_distance(pos, p) > calculate_distance(p1, p))
                 return -2; // return to line warning
 
-            //console.log("Dist bad", calculate_distance(pos, p));
-            /*if (calculate_distance(pos, p) > UPDATE_POS_DIST){
-                console.log("GOin g");
+            // might cause trouble check it out
+            if (calculate_distance(pos, p) > UPDATE_POS_DIST){
                 return -1;
-            }*/
+            }
 
             return pts;
         } else {
@@ -127,7 +120,6 @@ function get_next_pt(pos, route) {
             if (route.length < 3) {
                 return 1;
             }
-            //console.log("Second line");
             if (calculate_distance(pos, p2) > calculate_distance(p, p2))
                 return -2;
             if (calculate_distance(pos, sphere_to_cart(route[pts + 1])) > UPDATE_POS_DIST)
@@ -149,7 +141,6 @@ function update_route(pos) {
     // draw a line from the current coords to the returned coord
 
     let nxt = get_next_pt(pos, route_as_lngs);
-    console.log("Next point is", nxt);
     if (nxt < 0)
         return;
 
@@ -216,7 +207,6 @@ function update_instruction(pos) {
     // need to fix
     // updates the instructions on screen
     let nxt_instruc = get_next_instruc(pos, route_as_lngs);
-    console.log("The next instruc", nxt_instruc);
     let msg = new SpeechSynthesisUtterance(nxt_instruc);
     window.speechSynthesis.speak(msg);
 
@@ -261,7 +251,6 @@ function map_refresh(e) {
     }
 
     if (routeStarted) {
-        console.log("Checking if");
         let finished = update_instruction(pos)
 
         if (finished) {
@@ -292,7 +281,6 @@ function generate_route(n) {
 
 function start_route() {
     routeStarted = true;
-    console.log("New status", routeStarted);
     let ins_over = document.getElementById("ins");
     ins_over.style.display = 'block';
     //walker = simulateWalker(route, 1.4); // ~1.4 m/s (average walking speed)
@@ -300,12 +288,6 @@ function start_route() {
 }
 
 // refreshes the map every time the user's location changes
-setInterval(map_refresh, 10);
-//nav_map.on("locationfound", map_refresh)
-//setInterval(map_refresh, 15);
-/*
-TODO: 
-    - Reduce noise in tron line updates
-    - If user gets too far from line recalculate route
-    - Test and refine live directions
-*/
+/* for testing */
+//setInterval(map_refresh, 10);
+nav_map.on("locationfound", map_refresh)
