@@ -278,12 +278,12 @@ function map_refresh(e) {
 function generate_route(n) {
     // n is the destination node id
     // calculates and draws the route and gets it ready for live instruction
-    var circleMarker = L.circleMarker(swap(school_map.get(closest_id).coords), {
+    /*var circleMarker = L.circleMarker(swap(school_map.get(closest_id).coords), {
         radius: 10, // Radius in pixels
         color: 'blue', // Border color
         fillColor: 'red', // Fill color
         fillOpacity: 0.5 // Fill opacity
-    }).addTo(nav_map);
+    }).addTo(nav_map);*/
     route = A_star(closest_id, n);
     tron_line(route);
     full_route = __tronLayer.getLatLngs();
