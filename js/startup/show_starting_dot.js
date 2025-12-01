@@ -2,7 +2,7 @@
 let blueDot; // marker ref
 var initial_connect = true;
 var too_far = false; // is the user too far from UMBC
-const MAX_DIST_FROM_UMBC = 416.97; // max radius from 
+const MAX_DIST_FROM_UMBC = 416.97; // max radius from UMBC in meters 
 var closest_id = null;
 
   function placeBlueDot(lat, lng) {
@@ -25,7 +25,6 @@ function onGeoSuccess(pos) {
   placeBlueDot(latitude, longitude);
   if (initial_connect) {
     closest_id = get_closest_node([longitude, latitude]).id;
-    console.log("Id",closest_id);
     nav_map.setView([latitude, longitude], zoom_lvl);
 
     // check if user is too far from UMBC

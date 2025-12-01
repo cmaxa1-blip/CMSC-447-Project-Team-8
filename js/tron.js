@@ -76,13 +76,13 @@ function tron_line(path) {
   // draw
   __tronLayer = L.polyline(latLngs, {
     weight: 6,
-    opacity: 0.9
+    opacity: 0.9, color:'gold', line:'black'
   }).addTo(nav_map);
 
   // fit view
   if (latLngs.length > 1) {
     try {
       nav_map.fitBounds(__tronLayer.getBounds(), { padding: [30, 30] });
-    } catch (_) {}
+    } catch (_) { }
   }
 }

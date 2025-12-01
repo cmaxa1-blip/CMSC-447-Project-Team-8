@@ -274,6 +274,7 @@ function generate_route(n) {
         fillOpacity: 0.5 // Fill opacity
     }).addTo(nav_map);*/
     route = A_star(closest_id, n);
+    console.log("Route is:", route);
     tron_line(route);
     full_route = __tronLayer.getLatLngs();
     route_as_lngs = convert_polypath_to_long_lats(full_route);
