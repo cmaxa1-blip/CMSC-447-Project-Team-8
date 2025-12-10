@@ -8,22 +8,11 @@ function get_next_instruc(pos, route) {
     // pos is a long lat pair representing user position
     // assume position is relatively close to tron line
     // assumes they have not arrived
-
-    // going to need funciton to convert polyline with lng and lat attributes into swapped arrays
     let pts = get_nearest_coord_pair(pos, route);
     pos = sphere_to_cart(pos);
 
     let v1 = null; // vector user is traveling along
     let v2 = null; // next vector the user will have to travel along
-
-    /*let d = calculate_distance(pos, sphere_to_cart(route[pts]));
-    d = get_dist_from_line()
-    console.log("Distance", d);
-    if (d > REDIRECT_CUTOFF && d < REROUTE_CUTOFF) {
-        return "Turn around";
-    } else if (d >= REROUTE_CUTOFF) {
-        return "Rerouting";
-    }*/
 
 
     if (pts == route.length - 1 && calculate_distance(pos, sphere_to_cart(route[pts])) <= ARRIVED_DIST) {
